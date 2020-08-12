@@ -1,0 +1,31 @@
+{
+  "name": "heimdall",
+  "version": "1.0.0",
+  "description": "Inventory Management System",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tabouzeid/heimdall.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Taher Abouzeid, Michael Li, Samson Wong, Brielle McCormick, Mackenzie Clark, Daria Tharmaratnam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tabouzeid/heimdall/issues"
+  },
+  "homepage": "https://github.com/tabouzeid/heimdall#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.6.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "handlebars": "^4.7.6",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4"
+  }
+}
