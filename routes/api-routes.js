@@ -4,7 +4,9 @@ const db = require('../models');
 module.exports = function (app) {
   app.get('/api/product', (req, res) => {
     // return contents of the Product table
-    res.end();
+    db.Product.findAll().then((products) => {
+      res.json(JSON.stringify(products));
+    });
   });
 
   app.post('/api/product', (req, res) => {
