@@ -12,6 +12,9 @@ const exphbs = require('express-handlebars');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+// Requiring our models for syncing
+const db = require('./models');
+
 // Set Handlebars as the default templating engine.
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -22,6 +25,10 @@ app.use(express.json());
 require('./routes/api-routes')(app);
 require('./routes/html-routes')(app);
 
-app.listen(PORT, () => {
-  console.log(`App listening on PORT ${PORT}`);
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`App listening on PORT ${PORT}`);
+  });
 });
