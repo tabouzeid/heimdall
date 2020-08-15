@@ -1,9 +1,9 @@
-const $tableID = $('#table');
- const $BTN = $('#export-btn');
- const $EXPORT = $('#export');
- const buySell = $('#buy-sell');
+const tableID = $('#table');
+const BTN = $('#export-btn');
+const EXPORT = $('#export');
+const buySell = $('#buy-sell');
 
- const newTr = `
+const newTr = `
 <tr class="hide">
   <td class="pt-3-half" contenteditable="true">Example</td>
   <td class="pt-3-half" contenteditable="true">Example</td>
@@ -16,113 +16,77 @@ const $tableID = $('#table');
   </td>
 </tr>`;
 
-//this will create the NewOrder Modal when clicked.
-$('#newOrder').click(function(){
-    //console.log("entered newOrder");
-
-    window.location.replace('/newOrder');
-
-    //     const newOrderModal = $('<div>');
-
-    // newOrderModal.appendTo('body').load('/newOrder'); 
-
-    //tested 
-    // $.get("/newOrder").then(function(data) {
-    //     console.log("testing get route connection");
-    //     $('body').append($('<div>').html(data));
-    // });
-
-    // $(newOrderModal).modal({
-    //     escapeClose: true,
-    //     clickClose: true,
-    //     showClose: true,
-    //   });
-
-
-
+// This will create the NewOrder Modal when clicked.
+$('#newOrder').click(() => {
+  window.location.replace('/newOrder');
 });
 
 // this is for handling the table in the NewOrder screen
-//_________________________________________Code from Bootstrap________________________________________________________
+// ----- Code from Bootstrap ------
 
+$('.table-add').on('click', 'i', () => {
+  const $clone = tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
 
- $('.table-add').on('click', 'i', () => {
+  if (tableID.find('tbody tr').length === 0) {
+    $('tbody').append(newTr);
+  }
 
-   const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
+  tableID.find('table').append($clone);
+});
 
-   if ($tableID.find('tbody tr').length === 0) {
+tableID.on('click', '.table-remove', function () {
+  $(this).parents('tr').detach();
+});
 
-     $('tbody').append(newTr);
-   }
+tableID.on('click', '.table-up', function () {
+  const $row = $(this).parents('tr');
 
-   $tableID.find('table').append($clone);
- });
+  if ($row.index() === 0) {
+    return;
+  }
 
- $tableID.on('click', '.table-remove', function () {
+  $row.prev().before($row.get(0));
+});
 
-   $(this).parents('tr').detach();
- });
+tableID.on('click', '.table-down', function () {
+  const $row = $(this).parents('tr');
+  $row.next().after($row.get(0));
+});
 
- $tableID.on('click', '.table-up', function () {
+// A few jQuery helpers for exporting only
+jQuery.fn.pop = [].pop;
+jQuery.fn.shift = [].shift;
 
-   const $row = $(this).parents('tr');
+BTN.on('click', () => {
+  const $rows = tableID.find('tr:not(:hidden)');
+  const headers = [];
+  const data = [];
 
-   if ($row.index() === 0) {
-     return;
-   }
+  // Get the headers (add special header logic here)
+  $($rows.shift()).find('th:not(:empty)').each(function () {
+    headers.push($(this).text().toLowerCase());
+  });
 
-   $row.prev().before($row.get(0));
- });
+  // Turn all existing rows into a loopable array
+  $rows.each(function () {
+    const $td = $(this).find('td');
+    const h = {};
 
- $tableID.on('click', '.table-down', function () {
+    // Use the headers from earlier to name our hash keys
+    headers.forEach((header, i) => {
+      h[header] = $td.eq(i).text();
+    });
 
-   const $row = $(this).parents('tr');
-   $row.next().after($row.get(0));
- });
+    data.push(h);
+  });
 
- // A few jQuery helpers for exporting only
- jQuery.fn.pop = [].pop;
- jQuery.fn.shift = [].shift;
+  // Output the result
+  EXPORT.text(JSON.stringify(data));
+});
 
- $BTN.on('click', () => {
+// This is to handle dropdown for buy / sell
+const buySellArr = ['Buy', 'Sell'];
 
-   const $rows = $tableID.find('tr:not(:hidden)');
-   const headers = [];
-   const data = [];
-
-   // Get the headers (add special header logic here)
-   $($rows.shift()).find('th:not(:empty)').each(function () {
-
-     headers.push($(this).text().toLowerCase());
-   });
-
-   // Turn all existing rows into a loopable array
-   $rows.each(function () {
-     const $td = $(this).find('td');
-     const h = {};
-
-     // Use the headers from earlier to name our hash keys
-     headers.forEach((header, i) => {
-
-       h[header] = $td.eq(i).text();
-     });
-
-     data.push(h);
-   });
-
-   // Output the result
-   $EXPORT.text(JSON.stringify(data));
- });
-
- //____________________________________________________________________________________________
-
- //This is to handle dropdown for buy / sell
- let buySellArr = ["Buy" , "Sell"];
-
-
- for (const i = 0; i < buySellArr.length; i ++) {
-
-    const option = $("<option>").appendTo(buySell).attr("value", buySellArr[i]).text(buySellArr[i]);
-
+for (let i = 0; i < buySellArr.length; i += 1) {
+  $('<option>').appendTo(buySell).attr('value', buySellArr[i]).text(buySellArr[i]);
 }
-

@@ -9,6 +9,6 @@ module.exports = function (app) {
 
   // a new route is created to manage a seperate newOrder.handlebars file.
   app.get('/newOrder', (req, res) => {
-      res.render('newOrder');
+    res.render('newOrder');
   });
 };
