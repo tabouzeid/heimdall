@@ -1,0 +1,48 @@
+/* Landing Page Style */
+
+h1 {
+    letter-spacing: 3px;
+}
+
+p {
+    letter-spacing: 2px;
+}
+
+h5 {
+    letter-spacing: 3px;
+}
+
+/* unvisited link */
+a:link {
+    color:  rgb(67, 156, 230);
+  }
+  
+  /* visited link */
+  a:visited {
+    color: rgb(43, 102, 150);
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: rosybrown;
+  }
+
+/* Inventory Button */
+#inventoryBtn {
+    letter-spacing: 3px;
+    margin-right: 10%;
+    background-color: rgb(43, 102, 150);
+    border: none;
+    padding-right: 4%;
+    padding-left: 4%;
+    float: right;
+}
+
+/* Inventory Button Hidden at Smaller View Ports */
+@media screen and (min-width: 0px) and (max-width: 400px) {
+    #inventoryBtn { display: block; }  /* show it on small screens */
+  }
+  
+@media screen and (min-width: 401px) and (max-width: 1024px) {
+    #inventoryBtn { display: none; }   /* hide it elsewhere */
+  }
