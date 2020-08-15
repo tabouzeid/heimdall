@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Make sure resources inside public folder are reachable
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 require('./routes/api-routes')(app);
 require('./routes/html-routes')(app);
