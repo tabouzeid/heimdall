@@ -11,4 +11,10 @@ module.exports = function (app) {
   app.get('/newOrder', (req, res) => {
     res.render('newOrder');
   });
+
+    // a new route is created to add new inventory via newInventory.handlebars file.
+    app.get('/add/inventory', (req, res) => {
+      res.render('newInventory');
+    });
+
 };
