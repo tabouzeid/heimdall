@@ -12,9 +12,8 @@ module.exports = function (app) {
     res.render('newOrder');
   });
 
-    // a new route is created to add new inventory via newInventory.handlebars file.
-    app.get('/add/inventory', (req, res) => {
-      res.render('newInventory');
-    });
-
+  // a new route is created to add new inventory via newInventory.handlebars file.
+  app.get('/add/inventory', (req, res) => {
+    res.render('newInventory');
+  });
 };

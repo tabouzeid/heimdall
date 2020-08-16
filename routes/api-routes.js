@@ -12,17 +12,16 @@ module.exports = function (app) {
   app.post('/api/product', (req, res) => {
     // add a new row to the Product table
     db.Product.create({
-      sku:req.body.sku,
-      name:req.body.name,
-      description:req.body.description,
-      currentPurchasePrice:req.body.currentPurchasePrice,
-      currentSalePrice:req.body.currentSalePrice,
-      inventoryQuantity:req.body.inventoryQuantity,
-      minRequirement:req.body.minRequirement
-    }).then((products) => {
-      //res.json(JSON.stringify(products));
-      console.log("POST complete");
-    })
+      sku: req.body.sku,
+      name: req.body.name,
+      description: req.body.description,
+      currentPurchasePrice: req.body.currentPurchasePrice,
+      currentSalePrice: req.body.currentSalePrice,
+      inventoryQuantity: req.body.inventoryQuantity,
+      minRequirement: req.body.minRequirement,
+    }).then(() => {
+      console.log('POST complete');
+    });
     res.end();
   });
 
