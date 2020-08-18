@@ -1,6 +1,5 @@
 // Requiring our models and passport as we've configured it
 const db = require('../models');
-const moment = require('moment');
 
 module.exports = function (app) {
   app.get('/api/product', (req, res) => {
@@ -30,8 +29,8 @@ module.exports = function (app) {
     // update an existing row in the Product table
     db.Product.update(req.body, {
       where: {
-        sku: req.body.sku
-      }
+        sku: req.body.sku,
+      },
     }).then(() => {
       res.end();
     });
@@ -40,11 +39,11 @@ module.exports = function (app) {
   app.get('/api/product/:sku', (req, res) => {
     // return Product table info for req.params.sku
     // as well as the 3rd party api info for that sku
-    let skuParam = req.params.sku;
-    db.Product.findOne({ 
-      where: { 
-        sku: skuParam 
-      } 
+    const skuParam = req.params.sku;
+    db.Product.findOne({
+      where: {
+        sku: skuParam,
+      },
     }).then((row) => {
       res.json(row);
     });
