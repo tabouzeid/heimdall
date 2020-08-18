@@ -1,10 +1,67 @@
-<h1>Inventory</h1>
+<div class="d-flex flex-row vh-100 inventoryBody">
+    <div class="inventoryPageLeftCol d-flex flex-column align-items-center justify-content-center p-4 col-lg-2">
 
-{{!-- NewOrder button --}}
- <button type="button"   id = "newOrder" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">New Order</button>
+        <h2 class="searchHeader text-center mb-5">Do we want a search bar here? Still need to fix spacing on nav bar
+        </h2>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
 
- {{!-- NewInventory button --}}
- <button type="button"   id = "newInventory" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">New Inventory</button>
+    <div class="col-lg-10 mt-4">
+        <nav class="navbar navbar-light bg-light d-flex flex-row justify-content-between">
+            <img class="invLogo" src="/img/heimdall_navy_blue.png" alt="heimdall logo">
+            <form class="form-inline">
+                {{!-- NewOrder button --}}
+                <button type="button" id="newOrder" class="btn btn-primary" data-toggle="modal"
+                    data-target="#exampleModal" data-whatever="@mdo">New Order</button>
 
- <script src="/js/newOrder.js"></script>
- <script src="/js/newInventory.js"></script>
+                {{!-- NewInventory button --}}
+                <button type="button" id="newInventory" class="btn btn-primary ml-3" data-toggle="modal"
+                    data-target="#exampleModal" data-whatever="@mdo">New Inventory</button>
+            </form>
+
+        </nav>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">SKU</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Wholesale</th>
+                    <th scope="col">MSRP</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>000000000</td>
+                    <td>Product 1</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>000000000</td>
+                    <td>Product 2</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+<script src="/js/newOrder.js"></script>
+<script src="/js/newInventory.js"></script>

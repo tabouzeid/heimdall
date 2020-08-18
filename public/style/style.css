@@ -38,6 +38,18 @@ a:link {
     float: right;
 }
 
+/* //////////////////// Brielle's styling ///////////////// */
+
+.inventoryPageLeftCol{
+  background-color: #002855;
+  color: white;
+}
+.invLogo{
+  width: 25%;
+}
+.searchHeader{
+  color: white;
+}
 /* Inventory Button Hidden at Smaller View Ports */
 @media screen and (min-width: 0px) and (max-width: 400px) {
     #inventoryBtn { display: block; }  /* show it on small screens */
