@@ -5,7 +5,7 @@ module.exports = function (app) {
   app.get('/api/product', (req, res) => {
     // return contents of the Product table
     db.Product.findAll().then((products) => {
-      res.json(JSON.stringify(products));
+      res.json(products);
     });
   });
 
@@ -27,13 +27,26 @@ module.exports = function (app) {
 
   app.put('/api/product', (req, res) => {
     // update an existing row in the Product table
-    res.end();
+    db.Product.update(req.body, {
+      where: {
+        sku: req.body.sku,
+      },
+    }).then(() => {
+      res.end();
+    });
   });
 
   app.get('/api/product/:sku', (req, res) => {
     // return Product table info for req.params.sku
     // as well as the 3rd party api info for that sku
-    res.end();
+    const skuParam = req.params.sku;
+    db.Product.findOne({
+      where: {
+        sku: skuParam,
+      },
+    }).then((row) => {
+      res.json(row);
+    });
   });
 
   app.post('/api/order', (req, res) => {
