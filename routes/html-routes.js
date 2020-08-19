@@ -16,7 +16,7 @@ module.exports = function (app) {
   app.get('/add/inventory', (req, res) => {
     res.render('newInventory');
   });
-  
+
   app.get('/add/skuLookup', (req, res) => {
     res.render('skuLookup');
   });
