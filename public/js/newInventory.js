@@ -5,10 +5,34 @@ $(document).ready(() => {
     url: '/api/product',
 
   }).then((res) => {
-    console.log(res);
+    for (let i = 0; i < res.length; i += 1) {
+      const trow = $('<tr>');
+      const thNumber = $('<th>');
+      const sku = $('<td>');
+      const productName = $('<td>');
+      const productDescr = $('<td>');
+      const wholesale = $('<td>');
+      const msrp = $('<td>');
+      const productQuantity = $('<td>');
+      thNumber.attr('scope', 'col');
+      thNumber.text(i + 1);
+      sku.text(res[i].sku);
+      productName.text(res[i].name);
+      productDescr.text(res[i].description);
+      wholesale.text(res[i].currentPurchasePrice);
+      msrp.text(res[i].currentSalePrice);
+      productQuantity.text(res[i].inventoryQuantity);
 
-    // dynamically create rows here
-    // can use server side (handlebars) or browser side with jquery
+      trow.append(thNumber);
+      trow.append(sku);
+      trow.append(productName);
+      trow.append(productDescr);
+      trow.append(wholesale);
+      trow.append(msrp);
+      trow.append(productQuantity);
+      $('.currentInv').append(trow);
+    }
+    console.log(res);
   });
 
   // This event handler is activated when inside Inventory.handlebar
@@ -70,7 +94,7 @@ $(document).ready(() => {
     })
       .then(() => {
         // For now back to add inventory page but we can update later to another page.
-        window.location.replace('/add/inventory');
+        window.location.replace('/inventory');
         // If there's an error, log the error
       })
       .catch((err) => {
