@@ -21,6 +21,7 @@ module.exports = function (app) {
       minRequirement: req.body.minRequirement,
     }).then(() => {
       console.log('POST complete');
+      // res.redirect("/inventory");
     });
     res.end();
   });

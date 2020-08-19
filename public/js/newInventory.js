@@ -7,6 +7,48 @@ $(document).ready(() => {
   }).then((res) => {
     console.log(res);
 
+    // <tr>
+
+    //   <th scope="row">1</th>
+    //   <td>000000000</td>
+    //   <td>Product 1</td>
+    //   <td>test</td>
+    //   <td>test</td>
+    //   <td>test</td>
+    //   <td>test</td>
+
+    // </tr>
+    for (var i = 0; i < res.length; i++) {
+
+      var trow = $("<tr>");
+      var thNUmber = $("<th>");
+      thNUmber.attr("scope", "col");
+      thNUmber.text(i + 1)
+      var sku = $("<td>");
+      sku.text(res[i].sku);
+
+      var productName = $("<td>");
+      productName.text(res[i].name);
+      var productDescr = $("<td>");
+      productDescr.text(res[i].description);
+      var wholesale = $("<td>");
+      wholesale.text(res[i].currentPurchasePrice);
+      var msrp = $("<td>");
+      msrp.text(res[i].currentSalePrice);
+      var productQuantity = $("<td>");
+      productQuantity.text(res[i].inventoryQuantity);
+
+      //.currentInv
+      trow.append(thNUmber);
+      trow.append(sku);
+      trow.append(productName);
+      trow.append(productDescr);
+      trow.append(wholesale);
+      trow.append(msrp);
+      trow.append(productQuantity);
+      $(".currentInv").append(trow);
+    }
+
     // dynamically create rows here
     // can use server side (handlebars) or browser side with jquery
   });
@@ -70,7 +112,7 @@ $(document).ready(() => {
     })
       .then(() => {
         // For now back to add inventory page but we can update later to another page.
-        window.location.replace('/add/inventory');
+        window.location.replace('/inventory');
         // If there's an error, log the error
       })
       .catch((err) => {

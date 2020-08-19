@@ -21,6 +21,10 @@ $('#newOrder').click(() => {
   window.location.replace('/newOrder');
 });
 
+$('#addNewOrder').click(function () {
+  alert("adding new order");
+});
+
 // this is for handling the table in the NewOrder screen
 // ----- Code from Bootstrap ------
 
