@@ -6,14 +6,14 @@ $(document).ready(() => {
 
   }).then((res) => {
     for (let i = 0; i < res.length; i += 1) {
-      let trow = $('<tr>');
-      let thNumber = $('<th>');
-      let sku = $('<td>');
-      let productName = $('<td>');
-      let productDescr = $('<td>');
-      let wholesale = $('<td>');
-      let msrp = $('<td>');
-      let productQuantity = $('<td>');
+      const trow = $('<tr>');
+      const thNumber = $('<th>');
+      const sku = $('<td>');
+      const productName = $('<td>');
+      const productDescr = $('<td>');
+      const wholesale = $('<td>');
+      const msrp = $('<td>');
+      const productQuantity = $('<td>');
       thNumber.attr('scope', 'col');
       thNumber.text(i + 1);
       sku.text(res[i].sku);
