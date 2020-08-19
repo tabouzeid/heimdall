@@ -44,11 +44,19 @@ a:link {
   background-color: #002855;
   color: white;
 }
-.invLogo{
-  width: 25%;
-}
+/* .invLogo{
+  width: 50%;
+} */
 .searchHeader{
   color: white;
+}
+
+.invNav{
+  display: flex;
+  justify-content:space-between;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
 }
 /* Inventory Button Hidden at Smaller View Ports */
 @media screen and (min-width: 0px) and (max-width: 400px) {
