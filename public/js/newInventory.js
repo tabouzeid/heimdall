@@ -2,14 +2,14 @@
 $(document).ready(() => {
   $.ajax({
     method: 'GET',
-    url: '/api/product'
+    url: '/api/product',
 
   }).then((res) => {
-    console.log(res)
+    console.log(res);
 
-    // dynamically create rows here 
+    // dynamically create rows here
     // can use server side (handlebars) or browser side with jquery
-  })
+  });
 
   // This event handler is activated when inside Inventory.handlebar
   // user click on newinventory button
