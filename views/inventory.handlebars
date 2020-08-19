@@ -1,30 +1,30 @@
 <div class="d-flex flex-row vh-100 inventoryBody">
     <div class="inventoryPageLeftCol d-flex flex-column align-items-center justify-content-center p-4 col-lg-2">
 
-        <h2 class="searchHeader text-center mb-5">Do we want a search bar here? Still need to fix spacing on nav bar
+        <h2 class="searchHeader text-center mb-5">Content TBD
         </h2>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
 
-    <div class="col-lg-10 mt-4">
-        <nav class="navbar navbar-light bg-light d-flex flex-row justify-content-between">
-            <img class="invLogo" src="/img/heimdall_navy_blue.png" alt="heimdall logo">
+
+    <div class="col-lg-10 mt-4 p-4">
+        <nav class="navbar-expand-md navbar-light bg-light invNav">
+            <a href="/"><img class="invLogo" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
             <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary btn-sm my-2 my-sm-0" type="submit">Search</button>
+
+
                 {{!-- NewOrder button --}}
-                <button type="button" id="newOrder" class="btn btn-primary" data-toggle="modal"
+                <button type="button" id="newOrder" class="btn btn-primary btn-sm mx-4 my-sm-0" data-toggle="modal"
                     data-target="#exampleModal" data-whatever="@mdo">New Order</button>
 
                 {{!-- NewInventory button --}}
-                <button type="button" id="newInventory" class="btn btn-primary ml-3" data-toggle="modal"
+                <button type="button" id="newInventory" class="btn btn-primary btn-sm my-sm-0" data-toggle="modal"
                     data-target="#exampleModal" data-whatever="@mdo">New Inventory</button>
             </form>
-
         </nav>
 
-        <table class="table table-hover">
+        <table class="table table-hover mt-4">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -46,15 +46,6 @@
                     <td>test</td>
                     <td>test</td>
 
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>000000000</td>
-                    <td>Product 2</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
                 </tr>
 
             </tbody>

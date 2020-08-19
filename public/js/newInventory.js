@@ -1,5 +1,16 @@
 /* eslint-disable no-use-before-define */
 $(document).ready(() => {
+  $.ajax({
+    method: 'GET',
+    url: '/api/product'
+
+  }).then((res) => {
+    console.log(res)
+
+    // dynamically create rows here 
+    // can use server side (handlebars) or browser side with jquery
+  })
+
   // This event handler is activated when inside Inventory.handlebar
   // user click on newinventory button
   // this then it will take user to newInventory Page.
