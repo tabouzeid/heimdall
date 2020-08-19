@@ -32,13 +32,15 @@ $('#newOrder').click(() => {
 // ----- Code from Bootstrap ------
 
 $('.table-add').on('click', 'i', () => {
-  const $clone = tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
+  const cloneRow = tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
+
+  cloneRow.find('input').val('').end();
 
   if (tableID.find('tbody tr').length === 0) {
     $('tbody').append(newTr);
   }
 
-  tableID.find('table').append($clone);
+  tableID.find('table').append(cloneRow);
 });
 
 tableID.on('click', '.table-remove', function () {
