@@ -33,6 +33,7 @@
         <tbody>
           <tr>
             <td class="pt-3-half" contenteditable="true">
+<<<<<<< HEAD
               <select id="buy-sell">
                 <option value="" disabled selected hidden>Select</option>
               </select>
@@ -43,7 +44,14 @@
             <td>
               <span class="table-remove"><button type="button"
                   class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+=======
+              <select id="buy-sell"><option value="" disabled selected hidden>Select</option></select>
+>>>>>>> 612060cc77cfad7fc45560ead7e9513a20b82b09
             </td>
+            <td id="client-name" class="pt-3-half" contenteditable="true"></td>
+            <td id="sku" class="pt-3-half" contenteditable="true"></td>
+            <td id="quantity" class="pt-3-half" contenteditable="true"></td>
+            <td ><span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span></td>
           </tr>
 
         </tbody>
@@ -51,5 +59,10 @@
     </div>
   </div>
 </div>
+
+<div class="modal-footer">
+        <button type="button" id="submit-order" class="btn btn-primary">Save changes</button>
+        <button type="button" id = "close-screen" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
 
 <script src="/js/newOrder.js"></script>

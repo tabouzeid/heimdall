@@ -5,52 +5,34 @@ $(document).ready(() => {
     url: '/api/product',
 
   }).then((res) => {
-    console.log(res);
-
-    // <tr>
-
-    //   <th scope="row">1</th>
-    //   <td>000000000</td>
-    //   <td>Product 1</td>
-    //   <td>test</td>
-    //   <td>test</td>
-    //   <td>test</td>
-    //   <td>test</td>
-
-    // </tr>
-    for (var i = 0; i < res.length; i++) {
-
-      var trow = $("<tr>");
-      var thNUmber = $("<th>");
-      thNUmber.attr("scope", "col");
-      thNUmber.text(i + 1)
-      var sku = $("<td>");
+    for (let i = 0; i < res.length; i += 1) {
+      const trow = $('<tr>');
+      const thNumber = $('<th>');
+      const sku = $('<td>');
+      const productName = $('<td>');
+      const productDescr = $('<td>');
+      const wholesale = $('<td>');
+      const msrp = $('<td>');
+      const productQuantity = $('<td>');
+      thNumber.attr('scope', 'col');
+      thNumber.text(i + 1);
       sku.text(res[i].sku);
-
-      var productName = $("<td>");
       productName.text(res[i].name);
-      var productDescr = $("<td>");
       productDescr.text(res[i].description);
-      var wholesale = $("<td>");
       wholesale.text(res[i].currentPurchasePrice);
-      var msrp = $("<td>");
       msrp.text(res[i].currentSalePrice);
-      var productQuantity = $("<td>");
       productQuantity.text(res[i].inventoryQuantity);
 
-      //.currentInv
-      trow.append(thNUmber);
+      trow.append(thNumber);
       trow.append(sku);
       trow.append(productName);
       trow.append(productDescr);
       trow.append(wholesale);
       trow.append(msrp);
       trow.append(productQuantity);
-      $(".currentInv").append(trow);
+      $('.currentInv').append(trow);
     }
-
-    // dynamically create rows here
-    // can use server side (handlebars) or browser side with jquery
+    console.log(res);
   });
 
   // This event handler is activated when inside Inventory.handlebar
