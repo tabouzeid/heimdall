@@ -1,5 +1,6 @@
 // Requiring our models and passport as we've configured it
 const db = require('../models');
+const moment = require('moment');
 
 module.exports = function (app) {
   app.get('/api/product', (req, res) => {
@@ -52,6 +53,18 @@ module.exports = function (app) {
   app.post('/api/order', (req, res) => {
     // create a new entry in the Order table and get the orderId for it
     // add each item in your order to the OrderDetail table with the orderId included on each item
-    res.end();
+    db.Order.create({
+      clientName: req.body.clientName,
+      date: moment.now(),      
+    }).then((dbRes) => {
+      let orderId = dbRes.dataValues.orderId;
+      for(order of req.body.details){
+        order['orderId'] = orderId;
+      }
+      db.OrderDetail.bulkCreate(req.body.details).then(() => {
+        console.log('bulk adding done');
+        res.end();
+      });
+    });
   });
 };
