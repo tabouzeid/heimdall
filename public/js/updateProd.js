@@ -1,6 +1,4 @@
 /* eslint-disable no-use-before-define */
-const db = require('../../models');
-
 $(document).ready(() => {
   const updateProduct = $('form.updateProduct');
   const updatedProdName = $('input#productName');
