@@ -23,14 +23,10 @@ $(document).ready(() => {
     console.log('Submit clicked, updated product data is', updatedProdData);
 
     updateProductData(updatedProdData);
-    updatedProdName.val('');
-    updatedQuantity.val('');
-    updatedProdDesc.val('');
-    updatedCost.val('');
-    updatedPrice.val('');
   });
 
   function updateProductData(updatedProdData) {
+    console.log('Inside updateProductData function, passing object is:', updatedProdData);
     $.put('/api/product', {
       name: updatedProdData.productName,
       inventoryQuantity: updatedProdData.quantity,
