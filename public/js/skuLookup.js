@@ -3,6 +3,9 @@
 $(document).ready(() => {
   const newSupplierItem = JSON.parse(localStorage.getItem('newSupplierItem'));
   $('input#sku').val(newSupplierItem.sku || 'test');
+  $('input#productName').val(newSupplierItem.name || 'test');
+  $('input#productDescription').val(newSupplierItem.productDesc || 'test');
+  $('input#cost').val(newSupplierItem.sellPrice || 'test');
 
   $('#sku-search-btn').on('click', (event) => {
     event.preventDefault();
@@ -10,10 +13,11 @@ $(document).ready(() => {
     searchProduct(searchCategory);
   });
 
-  //   save the category they typed into the category-search input
-  //   Retrieve the value of that event, save in the object
-  //   console.log('user clicked on add this item', event);
-  //   window.location.replace('/add/inventory');
+  // Listener when click on Add Inventory
+  // save the category they typed into the category-search input
+  // Retrieve the value of that event, save in the object
+  // console.log('user clicked on add this item', event);
+  // window.location.replace('/add/inventory');
 
   $(document).on('click', '.add-inv-btn', function (event) {
     event.preventDefault();
@@ -28,7 +32,7 @@ $(document).ready(() => {
       productDesc: $(`#desc-${myVal}`).text(),
       sellPrice: $(`#saleprice-${myVal}`).text(),
     };
-
+    console.log("This Local Storage item is saved", suppInvData);
     localStorage.setItem('newSupplierItem', JSON.stringify(suppInvData));
     window.location.replace('/add/inventory');
     addSupplierInventory(suppInvData);
@@ -37,8 +41,7 @@ $(document).ready(() => {
 
 function addSupplierInventory(newInventory) {
   // event.preventDefault();
-  console.log('Triggered add supplier inventory with SKU', newInventory.sku);
-  console.log($('input#sku'));
+  //console.log('Triggered add supplier inventory with SKU', newInventory.sku);
   const newSupplierItem = JSON.parse(localStorage.getItem('newSupplierItem'));
   console.log('From local storage, new item is: ', newSupplierItem);
   // $('input#sku').text(newInventory.sku);
@@ -77,15 +80,13 @@ function productResult(productObj) {
     productSection.attr('id', `product-well-${i}`);
     // append the well to the well section
     $('#product-section').append(productSection);
-    // console.log('In the end of FOR loop:', i, 'product section is:', productSection);
+  
 
     // Now add all of product data to the well we just placed on the page
     // Below, use jQUERY way, to find, for those ID equal to this product-well-i, then
     // Append the content to it. this is the same as
     // <div id = product-well-xxx>
     // -> add the sku, name, description..etc, via the append method
-    // </div>
-
     $(`#product-well-${i}`).append(`<h2 id=sku-${i}>${productObj.products[i].sku}</h2>`);
     $(`#product-well-${i}`).append(`<h2 id=name-${i}>${productObj.products[i].name}</h2>`);
     $(`#product-well-${i}`).append(`<h2 id=desc-${i}>${productObj.products[i].shortDescription}</h2>`);
