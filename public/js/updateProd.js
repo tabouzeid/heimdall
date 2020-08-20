@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 $(document).ready(() => {
-  const existingProdSku = $('#sku'); // Ask team how to inject this into the hbs {{sku}} in updateProd.
+  // eslint-disable-next-line max-len
+  // const existingProdSku = $('#sku'); // Ask team how to inject this into the hbs {{sku}} in updateProd.
   const updateProduct = $('form.updateProduct');
   const updatedProdName = $('input#productName');
   const updatedQuantity = $('input#quantity');
@@ -25,16 +26,25 @@ $(document).ready(() => {
   });
 
   function updateProductData(updatedProdData) {
-    console.log('Inside updateProductData function, passing object is:', updatedProdData);
-    $.put('/api/product', {
+    const d = {
       name: updatedProdData.productName,
       inventoryQuantity: updatedProdData.quantity,
       description: updatedProdData.productDesc,
       currentPurchasePrice: updatedProdData.cost,
       currentSalePrice: updatedProdData.sellPrice,
       minRequirement: 0,
+    };
+
+    $.ajax({
+      method: 'PUT',
+      url: '/api/product',
+      data: JSON.stringify(d),
+      contentType: 'application/json',
+      dataType: 'json',
     }).then(() => {
       window.location.replace('/inventory');
+      // dynamically create rows here
+      // can use server side (handlebars) or browser side with jquery
     });
   }
 });
