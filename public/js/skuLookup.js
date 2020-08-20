@@ -10,14 +10,10 @@ $(document).ready(() => {
     searchProduct(searchCategory);
   });
 
-  // $('.add-inv-btn').on('click', (event) => {
   //   save the category they typed into the category-search input
   //   Retrieve the value of that event, save in the object
   //   console.log('user clicked on add this item', event);
   //   window.location.replace('/add/inventory');
-  // });
-
-  // $(document).on('click', '.add-inv-btn', addSupplierInventory);
 
   $(document).on('click', '.add-inv-btn', function (event) {
     event.preventDefault();
@@ -49,15 +45,14 @@ function addSupplierInventory(newInventory) {
   // $('input#sku').value = newInventory.sku;
   // $('input#sku').html(newSupplierItem.sku);
   $('input#sku').val(newSupplierItem.sku);
-  // $('#sku').val("111122223333");
 }
 
 function searchProduct(category) {
   const homeAudioCategoryID = 'pcmcat241600050001';
-  const categoryIs = {
-    'Home Audio': 'pcmcat241600050001',
-  };
-
+  // const categoryIs = {
+  //   'Home Audio': 'pcmcat241600050001',
+  // };
+  console.log('User select to filter by this cateogry: ', category);
   // const categoryURL = 'https://api.bestbuy.com/v1/products((categoryPath.id=pcmcat241600050001))?apiKey=vDloch7HfMAIbPtlLB2FE6Sp&sort=image.asc&show=categoryPath.name,image,name,salePrice,shortDescription,sku,thumbnailImage&format=json&pageSize=100';
   const categoryURL = `https://api.bestbuy.com/v1/products((categoryPath.id=${homeAudioCategoryID}))?apiKey=vDloch7HfMAIbPtlLB2FE6Sp&sort=image.asc&show=categoryPath.name,image,name,salePrice,shortDescription,sku,thumbnailImage&format=json&pageSize=100`;
 
