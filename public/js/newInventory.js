@@ -71,7 +71,7 @@ $(document).ready(() => {
     })
       .then(() => {
         // For now back to add inventory page but we can update later to another page.
-        window.location.replace('/add/inventory');
+        window.location.replace('/inventory');
         // If there's an error, log the error
       })
       .catch((err) => {
