@@ -49,9 +49,54 @@ module.exports = function (app) {
     });
   });
 
-  app.post('/api/order', (req, res) => {
+  app.post('/api/order', async (req, res) => {
     // create a new entry in the Order table and get the orderId for it
     // add each item in your order to the OrderDetail table with the orderId included on each item
+
+    // console.log(currentDay);
+
+    try {
+      await db.Order.create({
+        clientName: req.body.clientName,
+        // eslint-disable-next-line no-undef
+        date: req.body.date,
+      });
+
+      // await db.OrderDetail.create({
+      //   sku: req.body.sku,
+      //   buyOrSell: req.body.buyOrSell,
+      //   quantity: req.body.quantity,
+      //   pricePerUnit: req.body.pricePerUnit,
+      // });
+
+      // res.json(orderHeader);
+    } catch (error) {
+      console.log(error);
+      res.status(500);
+    }
+    // Brielle and Daria still need the commented out portions
+
+    // db.Order.create({
+    //   clientName: req.body.clientName,
+    //   // eslint-disable-next-line no-undef
+    //   date: req.body.date,
+    //   sku: req.body.sku,
+    //   buyOrSell: req.body.buyOrSell,
+    //   quantity: req.body.quantity,
+    //   pricePerUnit: req.body.pricePerUnit,
+    // }).then((res) => {
+    //   db.OrderDetail.create({
+    //     orderId: res.dataValues.orderId,
+    //     sku: res.dataValues.sku,
+    //     buyOrSell: res.dataValues.buyOrSell,
+    //     quantity: res.dataValues.quantity,
+    //     pricePerUnit: res.dataValues.pricePerUnit,
+    //   });
+    //   console.log(res);
+    //   console.log("-------------------");
+    //   console.log("req: " + re);
+    //   console.log('Order POST complete');
+    // });
     res.end();
   });
 };

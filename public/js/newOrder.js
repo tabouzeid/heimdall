@@ -94,7 +94,6 @@ function addOrder(newOrder) {
       // For now back to add inventory page but we can update later to another page.
       // window.location.replace('/inventory');
       console.log('Inside addInventory function, passing object is:', newOrder);
-      // If there's an error, log the error
     })
     .catch((err) => {
       console.log(err);
@@ -109,10 +108,12 @@ submitOrder.on('click', (event) => {
   // when you submit the form you have to send in each row of data
 
   const newOrderData = {
-    buy_sell: buySell.val().trim(),
-    client_name: clientName.text().trim(),
-    sku: sku.text().trim(),
-    quantity: quantity.text().trim(),
+    buyOrSell: buySell.val(),
+    clientName: clientName.val(),
+    sku: sku.text(),
+    quantity: quantity.text(),
+    // date: moment().format('L'),
+    pricePerUnit: 10,
   };
 
   console.log('Submit clicked, new inv data is', newOrderData);
