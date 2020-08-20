@@ -38,7 +38,7 @@ $(document).ready(() => {
   // When clicked on goCurrent, takes user to current inventory page
   $('#goCurrent').click(() => {
     window.location.replace('/inventory');
-  })
+  });
 
   // This event handler is activated when inside Inventory.handlebar
   // user click on newinventory button
@@ -51,7 +51,7 @@ $(document).ready(() => {
       productDesc: '',
       sellPrice: '',
     };
-    console.log(' Reset Local Storage item', suppInvData);
+
     localStorage.setItem('newSupplierItem', JSON.stringify(suppInvData));
 
     window.location.replace('/add/inventory');
