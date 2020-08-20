@@ -99,9 +99,9 @@ function addInventoryRow(inventoryItem) {
   const table = $('tbody');
   const rowNum = table.children().length + 1;
   const row = `
-  <tr>
+  <tr sku="${inventoryItem.sku}">
     <th scope="row">${rowNum}</th>
-    <td>${inventoryItem.sku}</td>
+    <td>${inventoryItem.sku}</td> 
     <td>${inventoryItem.name}</td>
     <td>${inventoryItem.description}</td>
     <td>${inventoryItem.currentPurchasePrice}</td>
