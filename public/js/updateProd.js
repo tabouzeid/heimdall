@@ -1,5 +1,6 @@
 /* eslint-disable no-use-before-define */
 $(document).ready(() => {
+  const existingProdSku = $('#sku'); // Ask team how to inject this into the hbs {{sku}} in updateProd.
   const updateProduct = $('form.updateProduct');
   const updatedProdName = $('input#productName');
   const updatedQuantity = $('input#quantity');
@@ -33,8 +34,7 @@ $(document).ready(() => {
       currentSalePrice: updatedProdData.sellPrice,
       minRequirement: 0,
     }).then(() => {
-      window.location.replace('/inventory'));
+      window.location.replace('/inventory');
+    });
   }
 });
-
-// Need logic to select row and get the product's current data for the sku
