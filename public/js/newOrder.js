@@ -89,15 +89,17 @@ for (let i = 0; i < buySellArr.length; i += 1) {
 // redirects us the the members page
 function addOrder(newOrder) {
   console.log('Inside addInventory function, passing object is:', newOrder);
-  $.post('/api/order', newOrder)
-    .then(() => {
-      // For now back to add inventory page but we can update later to another page.
-      // window.location.replace('/inventory');
-      console.log('Inside addInventory function, passing object is:', newOrder);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  $.ajax({
+    method: 'POST',
+    url: '/api/order',
+    data: newOrder,
+    contentType: 'application/json',
+    dataType: 'json',
+  }).then(() => {
+    window.location.replace('/inventory');
+    // dynamically create rows here
+    // can use server side (handlebars) or browser side with jquery
+  });
 }
 
 // this is to handle submit button
@@ -106,7 +108,6 @@ submitOrder.on('click', (event) => {
   event.preventDefault();
 
   // when you submit the form you have to send in each row of data
-
   const newOrderData = {
     buyOrSell: buySell.val(),
     clientName: clientName.val(),

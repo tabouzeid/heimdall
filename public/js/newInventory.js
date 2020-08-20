@@ -5,34 +5,11 @@ $(document).ready(() => {
     url: '/api/product',
 
   }).then((res) => {
-    for (let i = 0; i < res.length; i += 1) {
-      const trow = $('<tr>');
-      const thNumber = $('<th>');
-      const sku = $('<td>');
-      const productName = $('<td>');
-      const productDescr = $('<td>');
-      const wholesale = $('<td>');
-      const msrp = $('<td>');
-      const productQuantity = $('<td>');
-      thNumber.attr('scope', 'col');
-      thNumber.text(i + 1);
-      sku.text(res[i].sku);
-      productName.text(res[i].name);
-      productDescr.text(res[i].description);
-      wholesale.text(res[i].currentPurchasePrice);
-      msrp.text(res[i].currentSalePrice);
-      productQuantity.text(res[i].inventoryQuantity);
-
-      trow.append(thNumber);
-      trow.append(sku);
-      trow.append(productName);
-      trow.append(productDescr);
-      trow.append(wholesale);
-      trow.append(msrp);
-      trow.append(productQuantity);
-      $('.currentInv').append(trow);
-    }
-    console.log(res);
+    res.forEach((value) => {
+      addInventoryRow(value);
+    });
+    // dynamically create rows here
+    // can use server side (handlebars) or browser side with jquery
   });
 
   // When clicked on goCurrent, takes user to current inventory page
@@ -117,3 +94,20 @@ $(document).ready(() => {
       });
   }
 });
+
+function addInventoryRow(inventoryItem) {
+  const table = $('tbody');
+  const rowNum = table.children().length + 1;
+  const row = `
+  <tr>
+    <th scope="row">${rowNum}</th>
+    <td>${inventoryItem.sku}</td>
+    <td>${inventoryItem.name}</td>
+    <td>${inventoryItem.description}</td>
+    <td>${inventoryItem.currentPurchasePrice}</td>
+    <td>${inventoryItem.currentSalePrice}</td>
+    <td>${inventoryItem.inventoryQuantity}</td>
+  </tr>
+  `;
+  table.append(row);
+}
