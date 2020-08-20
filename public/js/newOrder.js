@@ -93,9 +93,9 @@ function addOrder(newOrder) {
     method: 'POST',
     url: '/api/order',
     data: newOrder,
-    contentType: "application/json",
-    dataType: "json",
-  }).then((res) => {
+    contentType: 'application/json',
+    dataType: 'json',
+  }).then(() => {
     window.location.replace('/inventory');
     // dynamically create rows here
     // can use server side (handlebars) or browser side with jquery

@@ -1,6 +1,5 @@
 // Requiring our models and passport as we've configured it
 const db = require('../models');
-const moment = require('moment');
 
 module.exports = function (app) {
   app.get('/api/product', (req, res) => {

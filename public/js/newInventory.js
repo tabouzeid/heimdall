@@ -5,9 +5,9 @@ $(document).ready(() => {
     url: '/api/product',
 
   }).then((res) => {
-    for (item of res){
-      addInventoryRow(item);
-    }
+    res.forEach((value) => {
+      addInventoryRow(value);
+    });
     // dynamically create rows here
     // can use server side (handlebars) or browser side with jquery
   });
@@ -80,12 +80,10 @@ $(document).ready(() => {
   }
 });
 
-
 function addInventoryRow(inventoryItem) {
-  let table = $('tbody');
-  console.log(table);
-  let rowNum = table.children().length + 1;
-  let row = `
+  const table = $('tbody');
+  const rowNum = table.children().length + 1;
+  const row = `
   <tr>
     <th scope="row">${rowNum}</th>
     <td>${inventoryItem.sku}</td>
@@ -95,7 +93,6 @@ function addInventoryRow(inventoryItem) {
     <td>${inventoryItem.currentSalePrice}</td>
     <td>${inventoryItem.inventoryQuantity}</td>
   </tr>
-  `
+  `;
   table.append(row);
-  console.log(table);
 }
