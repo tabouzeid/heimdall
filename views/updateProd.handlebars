@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2><b><center></center>Update Product/b></h2>
+        <form class="updateProduct">
+          
+          <div class="form-group">
+            <label for="sku" id="skuNum">SKU: {{this.sku}}</label>
+          </div>
+
+          <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" class="form-control" id="productName" placeholder="name name">
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" class="form-control" id="quantity" placeholder="new quantity">
+          </div>
+
+          <div class="form-group">
+            <label for="productDescription">Product Description</label>
+            <input type="text" class="form-control" id="productDescription" placeholder="new description">
+          </div>
+
+          <div class="form-group">
+              <label for="productDescription">Cost</label>
+              <input type="number" step="0.01" class="form-control" id="cost" placeholder="new cost">
+            </div>
+
+          <div class="form-group">
+            <label for="sellPrice">Sell Price</label>
+            <input type="number" step="0.01" class="form-control" id="sellPrice" placeholder="new price">
+          </div>
+
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
+
+          <button type="submit" class="btn btn-default">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/updateProd.js"></script>

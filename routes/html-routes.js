@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = (app) => {
   app.get('/', (req, res) => {
     res.render('landing');
   });
@@ -19,5 +19,9 @@ module.exports = function (app) {
 
   app.get('/add/skuLookup', (req, res) => {
     res.render('skuLookup');
+  });
+
+  app.get('/update/inventory', (req, res) => {
+    res.render('updateProd');
   });
 };
