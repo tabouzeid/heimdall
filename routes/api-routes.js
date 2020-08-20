@@ -1,4 +1,5 @@
 // Requiring our models and passport as we've configured it
+const moment = require('moment');
 const db = require('../models');
 
 module.exports = function (app) {
@@ -52,51 +53,19 @@ module.exports = function (app) {
   app.post('/api/order', async (req, res) => {
     // create a new entry in the Order table and get the orderId for it
     // add each item in your order to the OrderDetail table with the orderId included on each item
-
-    // console.log(currentDay);
-
     try {
-      await db.Order.create({
-        clientName: req.body.clientName,
-        // eslint-disable-next-line no-undef
-        date: req.body.date,
+      const orderRow = await db.Order.create({
+        date: moment.now(),
       });
 
-      // await db.OrderDetail.create({
-      //   sku: req.body.sku,
-      //   buyOrSell: req.body.buyOrSell,
-      //   quantity: req.body.quantity,
-      //   pricePerUnit: req.body.pricePerUnit,
-      // });
-
-      // res.json(orderHeader);
+      req.body.forEach((e) => {
+        e.orderId = orderRow.dataValues.orderId;
+      });
+      await db.OrderDetail.bulkCreate(req.body);
     } catch (error) {
       console.log(error);
       res.status(500);
     }
-    // Brielle and Daria still need the commented out portions
-
-    // db.Order.create({
-    //   clientName: req.body.clientName,
-    //   // eslint-disable-next-line no-undef
-    //   date: req.body.date,
-    //   sku: req.body.sku,
-    //   buyOrSell: req.body.buyOrSell,
-    //   quantity: req.body.quantity,
-    //   pricePerUnit: req.body.pricePerUnit,
-    // }).then((res) => {
-    //   db.OrderDetail.create({
-    //     orderId: res.dataValues.orderId,
-    //     sku: res.dataValues.sku,
-    //     buyOrSell: res.dataValues.buyOrSell,
-    //     quantity: res.dataValues.quantity,
-    //     pricePerUnit: res.dataValues.pricePerUnit,
-    //   });
-    //   console.log(res);
-    //   console.log("-------------------");
-    //   console.log("req: " + re);
-    //   console.log('Order POST complete');
-    // });
     res.end();
   });
 };
