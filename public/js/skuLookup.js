@@ -2,10 +2,15 @@
 
 $(document).ready(() => {
   const newSupplierItem = JSON.parse(localStorage.getItem('newSupplierItem'));
-  $('input#sku').val(newSupplierItem.sku || 'test');
-  $('input#productName').val(newSupplierItem.name || 'test');
-  $('input#productDescription').val(newSupplierItem.productDesc || 'test');
-  $('input#cost').val(newSupplierItem.sellPrice || 'test');
+  $('input#sku').val(newSupplierItem.sku || '');
+  $('input#productName').val(newSupplierItem.name || '');
+  $('input#productDescription').val(newSupplierItem.productDesc || '');
+  $('input#cost').val(newSupplierItem.sellPrice || '');
+
+  // When clicked on goCurrent, takes user to current inventory page
+  $('#goCurrent').click(() => {
+    window.location.replace('/inventory');
+  })
 
   $('#sku-search-btn').on('click', (event) => {
     event.preventDefault();
@@ -26,13 +31,14 @@ $(document).ready(() => {
     // use jQuery to search for that sku-id element;if found, extract that text.
     const myVal = $(this).data('inventory');
 
+    // Saved the selected product in object supplier Inventory Data (suppInvData)
     const suppInvData = {
       sku: $(`#sku-${myVal}`).text(),
       name: $(`#name-${myVal}`).text(),
       productDesc: $(`#desc-${myVal}`).text(),
       sellPrice: $(`#saleprice-${myVal}`).text(),
     };
-    console.log("This Local Storage item is saved", suppInvData);
+    console.log('This Local Storage item is saved', suppInvData);
     localStorage.setItem('newSupplierItem', JSON.stringify(suppInvData));
     window.location.replace('/add/inventory');
     addSupplierInventory(suppInvData);
@@ -41,7 +47,7 @@ $(document).ready(() => {
 
 function addSupplierInventory(newInventory) {
   // event.preventDefault();
-  //console.log('Triggered add supplier inventory with SKU', newInventory.sku);
+  // console.log('Triggered add supplier inventory with SKU', newInventory.sku);
   const newSupplierItem = JSON.parse(localStorage.getItem('newSupplierItem'));
   console.log('From local storage, new item is: ', newSupplierItem);
   // $('input#sku').text(newInventory.sku);
@@ -80,7 +86,6 @@ function productResult(productObj) {
     productSection.attr('id', `product-well-${i}`);
     // append the well to the well section
     $('#product-section').append(productSection);
-  
 
     // Now add all of product data to the well we just placed on the page
     // Below, use jQUERY way, to find, for those ID equal to this product-well-i, then
