@@ -1,10 +1,5 @@
 /* eslint-disable no-use-before-define */
 $(document).ready(() => {
-  // Update page loads when a product is clicked in inventory page.
-  $('#PLACEHOLDERBUTTON').click(() => {
-    window.location.replace('/update/Product');
-  });
-
   const updateProduct = $('form.updateProduct');
   const updatedProdName = $('input#productName');
   const updatedQuantity = $('input#quantity');
@@ -37,7 +32,8 @@ $(document).ready(() => {
       currentPurchasePrice: updatedProdData.cost,
       currentSalePrice: updatedProdData.sellPrice,
       minRequirement: 0,
-    });
+    }).then(() => {
+      window.location.replace('/inventory'));
   }
 });
 

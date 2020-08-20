@@ -101,7 +101,7 @@ function addInventoryRow(inventoryItem) {
   const row = `
   <tr>
     <th scope="row">${rowNum}</th>
-    <td>${inventoryItem.sku}</td>
+    <td id="skuNum">${inventoryItem.sku}</td> 
     <td>${inventoryItem.name}</td>
     <td>${inventoryItem.description}</td>
     <td>${inventoryItem.currentPurchasePrice}</td>
