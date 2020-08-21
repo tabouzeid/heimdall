@@ -18,7 +18,7 @@ $(document).ready(() => {
   });
 
   function renderProdData(data) {
-    $('#skuNum').text(`SKU: ${data.sku}`).css('font-size', 25);
+    $('#skuNum').text(`SKU: ${parseInt(data.sku, 10)}`).css('font-size', 25);
     $('#productName').attr('value', data.name);
     $('#quantity').attr('value', data.inventoryQuantity);
     $('#productDescription').attr('value', data.description);
@@ -60,6 +60,8 @@ $(document).ready(() => {
       dataType: 'json',
     }).then(() => {
       window.location.replace('/inventory');
+    }).catch((err) => {
+      console.log(err);
     });
   }
 });
