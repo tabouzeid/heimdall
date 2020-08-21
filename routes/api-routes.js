@@ -5,7 +5,11 @@ const db = require('../models');
 module.exports = function (app) {
   app.get('/api/product', (req, res) => {
     // return contents of the Product table
-    db.Product.findAll().then((products) => {
+    console.log(req.query);
+    db.Product.findAll(
+      // {offset: (req.query.pageNumber - 1) * 10,
+      // limit: 10,}
+    ).then((products) => {
       res.json(products);
     });
   });

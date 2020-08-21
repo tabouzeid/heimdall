@@ -3,13 +3,33 @@ $(document).ready(() => {
   $.ajax({
     method: 'GET',
     url: '/api/product',
+    // data: {
+    //   pageNumber: 1
+    // }
 
+    // dynamically create inventory rows here
   }).then((res) => {
     res.forEach((value) => {
       addInventoryRow(value);
     });
-    // dynamically create rows here
-    // can use server side (handlebars) or browser side with jquery
+    // $('#pagination-container').pagination({
+    //   dataSource: res,
+    //   // locator: 'items',
+    //   // totalNumber: 50,
+    //   pageSize: 10,
+    //   showPageNumbers: true,
+    //   // showPrevious: true,
+    //   // showNext: true,
+    //   // showNavigator: true,
+    //   // showFirstOnEllipsisShow: true,
+    //   // showLastOnEllipsisShow: true,
+    //   callback: function (data, pagination) {
+    //     console.log(data);
+    //     var html = data.map(product => {
+    //       $('#data-container').append(addInventoryRow(product));
+    //     });
+    //   }
+    // })
   });
 
   // When clicked on goCurrent, takes user to current inventory page
@@ -103,6 +123,7 @@ function addInventoryRow(inventoryItem) {
   const row = `
   <tr>
     <th scope="row">${rowNum}</th>
+
     <td><a href=${hrefStr}>${inventoryItem.sku}</a></td> 
     <td>${inventoryItem.name}</td>
     <td>${inventoryItem.description}</td>
@@ -112,4 +133,5 @@ function addInventoryRow(inventoryItem) {
   </tr>
   `;
   table.append(row);
+  // return row;
 }

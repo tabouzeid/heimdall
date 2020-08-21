@@ -1,67 +1,39 @@
-<div class="d-flex flex-row vh-100 inventoryBody">
-    <div class="inventoryPageLeftCol d-flex flex-column align-items-center justify-content-center p-4 col-lg-2">
+<nav class="navbar-light bg-light invNav">
+    <a href="/"><img class="invLogo" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
+    <form class="form-inline">
+        {{!-- NewOrder button --}}
+        <button type="button" id="newOrder" class="btn btn-primary btn-sm mx-4 my-sm-0" data-toggle="modal"
+            data-target="#exampleModal" data-whatever="@mdo">New Order</button>
 
-        <h2 class="searchHeader text-center mb-5">Content TBD
-        </h2>
-    </div>
+        {{!-- NewInventory button --}}
+        <button type="button" id="newInventory" class="btn btn-primary btn-sm my-sm-0" data-toggle="modal"
+            data-target="#exampleModal" data-whatever="@mdo">New Inventory</button>
+    </form>
+</nav>
+<div class="container my-5">
+    <table id="invTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">SKU</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Wholesale</th>
+                <th scope="col">MSRP</th>
+                <th scope="col">Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="data-container">
 
-
-    <div class="col-lg-10 mt-4 p-4">
-        <nav class="navbar-expand-md navbar-light bg-light invNav">
-            <a href="/"><img class="invLogo" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
-            <form class="form-inline">
-                {{!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary btn-sm my-2 my-sm-0" type="submit">Search</button> --}}
-
-
-                {{!-- NewOrder button --}}
-                <button type="button" id="newOrder" class="btn btn-primary btn-sm mx-4 my-sm-0" data-toggle="modal"
-                    data-target="#exampleModal" data-whatever="@mdo">New Order</button>
-
-                {{!-- NewInventory button --}}
-                <button type="button" id="newInventory" class="btn btn-primary btn-sm my-sm-0" data-toggle="modal"
-                    data-target="#exampleModal" data-whatever="@mdo">New Inventory</button>
-            </form>
-        </nav>
-
-        <nav aria-label="Page navigation">
-            <ul class="pagination d-flex justify-content-end mr-4 pr-2">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous" style="background-color:#f8f9fa">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#" style="background-color:#f8f9fa">1</a></li>
-                <li class="page-item"><a class="page-link" href="#" style="background-color:#f8f9fa">2</a></li>
-                <li class="page-item"><a class="page-link" href="#" style="background-color:#f8f9fa">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next" style="background-color:#f8f9fa">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        <table class="table table-hover mt-4">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">SKU</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Wholesale</th>
-                    <th scope="col">MSRP</th>
-                    <th scope="col">Quantity</th>
-                </tr>
-            </thead>
-            <tbody class="currentInv">
-
-            </tbody>
-        </table>
-    </div>
-
-
+        </tbody>
+    </table>
 </div>
+<div class="card text-white" id="pagination-container" style="background-color: #002855;">
+
+
+    <h2 class="text-center" style="margin:10rem; color: white;">graphic will go here</h2>
+</div>
+
 <script src="/js/newOrder.js"></script>
 <script src="/js/newInventory.js"></script>
 <script src="/js/updateProd.js"></script>
