@@ -11,7 +11,12 @@ Heimdall allows the user to add and update their invetory of products, as well a
 
 ## Authors & Acknowledgement
 
-- Taher Abouzeid, Michael Li, Daria Tharmaratnam, Mackenzie Clark, Samson Wong, Brielle McCormick
+- [Taher Abouzeid](https://github.com/tabouzeid) 
+- [Michael Li](https://github.com/geodudedude)
+- [Daria Tharmaratnam](https://github.com/edithdaria)
+- [Mackenzie Clark](https://github.com/mackenzieraeclark)
+- [Samson Wong](https://github.com/swong452)
+- [Brielle McCormick](https://github.com/BMccorm)
 
 ## Roadmap (e.g., future release ideas)
 
