@@ -34,32 +34,23 @@ $(document).ready(() => {
     event.preventDefault();
 
     const updatedProdData = {
-      sku: productSku.text().trim(),
-      productName: updatedProdName.val().trim(),
-      quantity: updatedQuantity.val().trim(),
-      productDesc: updatedProdDesc.val().trim(),
-      cost: updatedCost.val().trim(),
-      sellPrice: updatedPrice.val().trim(),
+      sku: url[5],
+      name: updatedProdName.val().trim(),
+      inventoryQuantity: updatedQuantity.val().trim(),
+      description: updatedProdDesc.val().trim(),
+      currentPurchasePrice: updatedCost.val().trim(),
+      currentSalePrice: updatedPrice.val().trim(),
+      minRequirement: 0,
     };
 
     updateProductData(updatedProdData);
   });
 
   function updateProductData(updatedProdData) {
-    const d = {
-      sku: updatedProdData.sku,
-      name: updatedProdData.productName,
-      inventoryQuantity: updatedProdData.quantity,
-      description: updatedProdData.productDesc,
-      currentPurchasePrice: updatedProdData.cost,
-      currentSalePrice: updatedProdData.sellPrice,
-      minRequirement: 0,
-    };
-
     $.ajax({
       method: 'PUT',
       url: '/api/product',
-      data: JSON.stringify(d),
+      data: JSON.stringify(updatedProdData),
       contentType: 'application/json',
       dataType: 'json',
     }).then(() => {
