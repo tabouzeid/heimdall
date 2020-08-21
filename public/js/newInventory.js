@@ -97,6 +97,7 @@ $(document).ready(() => {
 
 function addInventoryRow(inventoryItem) {
   const table = $('tbody');
+  // Link to updateProd page.
   const hrefStr = `/update/inventory/${inventoryItem.sku}`;
   const rowNum = table.children().length + 1;
   const row = `
@@ -108,7 +109,6 @@ function addInventoryRow(inventoryItem) {
     <td>${inventoryItem.currentPurchasePrice}</td>
     <td>${inventoryItem.currentSalePrice}</td>
     <td>${inventoryItem.inventoryQuantity}</td>
-    <td><button type="button" class="btn btn-primary btn-sm my-sm-0 updateBtn">Update</button></td>
   </tr>
   `;
   table.append(row);

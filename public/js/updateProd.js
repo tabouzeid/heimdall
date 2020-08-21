@@ -13,13 +13,11 @@ $(document).ready(() => {
     method: 'GET',
     url: `/api/product/${url[5]}`,
   }).then((res) => {
-    console.log(res);
     renderProdData(res);
   });
 
   function renderProdData(data) {
-    console.log(data);
-    $('#skuNum').val(`SKU: ${data.sku}`);
+    $('#skuNum').text(`SKU: ${data.sku}`).css('font-size', 25);
     $('#productName').attr('value', data.name);
     $('#quantity').attr('value', data.inventoryQuantity);
     $('#productDescription').attr('value', data.description);
