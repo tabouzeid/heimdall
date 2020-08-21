@@ -8,6 +8,11 @@ $(document).ready(() => {
   const updatedCost = $('input#cost');
   const updatedPrice = $('input#sellPrice');
 
+  // When clicked on goCurrent, takes user to current inventory page
+  $('#goCurrent').click(() => {
+    window.location.replace('/inventory');
+  });
+
   // Parses sku number from the URL
   const url = window.location.href.split('/');
 
