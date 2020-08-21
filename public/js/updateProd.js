@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 $(document).ready(() => {
   const updateProduct = $('form.updateProduct');
-  const productSku = $('#skuNum');
+  // const productSku = $('#skuNum');
   const updatedProdName = $('input#productName');
   const updatedQuantity = $('input#quantity');
   const updatedProdDesc = $('input#productDescription');
