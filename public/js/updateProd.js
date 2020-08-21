@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 $(document).ready(() => {
   const updateProduct = $('form.updateProduct');
+  const productSku = $('#skuNum');
   const updatedProdName = $('input#productName');
   const updatedQuantity = $('input#quantity');
   const updatedProdDesc = $('input#productDescription');
@@ -29,6 +30,7 @@ $(document).ready(() => {
     event.preventDefault();
 
     const updatedProdData = {
+      sku: productSku.text().trim(),
       productName: updatedProdName.val().trim(),
       quantity: updatedQuantity.val().trim(),
       productDesc: updatedProdDesc.val().trim(),
@@ -41,6 +43,7 @@ $(document).ready(() => {
 
   function updateProductData(updatedProdData) {
     const d = {
+      sku: updatedProdData.sku,
       name: updatedProdData.productName,
       inventoryQuantity: updatedProdData.quantity,
       description: updatedProdData.productDesc,
