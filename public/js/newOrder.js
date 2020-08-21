@@ -13,10 +13,8 @@ const newTr = `
 <td class="pt-3-half"><input id="client-name_0"></td>
 <td class="pt-3-half"><select id="sku_0"><option value="" disabled selected hidden>Select</option></select></td>
 <td class="pt-3-half"><select id="quantity_0"><option value="" disabled selected hidden>Select</option></select></td>
-<td>
-<span class="table-remove"><button type="button"  
-    class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-</td>
+<td class="pt-3-half" id="price-per-unit_0"></td>
+<td><span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span></td>
 </tr>`;
 
 // This will create the NewOrder Modal when clicked.
@@ -37,14 +35,6 @@ function init() {
       if (res[i].inventoryQuantity > 0) {
         $('<option>').appendTo($('#sku_0')).attr('value', res[i].sku).text(res[i].sku);
       }
-
-      if (res[i].inventoryQuantity === 0) {
-        $('<option>').appendTo($('#quantity_0')).attr('value', 'Not Available').text('Not Available');
-      }
-
-      if (res[i].inventoryQuantity > 0) {
-        // $('<option>').appendTo($('#quantity_0')).attr('value', ).text();
-      }
     }
   });
 
@@ -56,6 +46,37 @@ function init() {
 }
 
 init();
+
+// display buy price or selt price
+function getBuyOrSellPrice(e) {
+  e.preventDefault();
+  $('#price-per-unit_0').text('');
+  const sku = e.target.value;
+  console.log(sku);
+
+  $.ajax({
+    method: 'GET',
+    url: `/api/product/${sku}`,
+  }).then((res) => {
+    console.log(res);
+
+    // setting buy or sell price
+    if ($('#buy-sell_0').val() === 'Buy') {
+      $('<span>').appendTo($('#price-per-unit_0')).text(res.currentPurchasePrice);
+    } else {
+      $('<span>').appendTo($('#price-per-unit_0')).text(res.currentSalePrice);
+    }
+
+    // show product 'not available' when quantity = 0
+    if (res.inventoryQuantity <= 0) {
+      $('<span>').appendTo($('#quantity_0')).attr('value', 'Not Available').text('Not Available');
+    }
+    $('#quantity_0').attr('max', res.inventoryQuantity);
+  });
+}
+
+// selecting sku event
+$('#sku_0').on('change', getBuyOrSellPrice);
 
 // this is for handling the table in the NewOrder screen
 // ----- Code from Bootstrap ------
@@ -134,7 +155,7 @@ submitOrder.on('click', (event) => {
       clientName: $('#client-name_0', row).val(),
       sku: $('#sku_0', row).val(),
       quantity: $('#quantity_0', row).val(),
-      pricePerUnit: 10,
+      pricePerUnit: $('#price-per-unit_0', row).text(),
     });
   });
 
@@ -145,6 +166,7 @@ submitOrder.on('click', (event) => {
   window.location.replace('/inventory');
 });
 
-$('#goCurrent').click(() => {
+$('#close-screen').on('click', (e) => {
+  e.preventDefault();
   window.location.replace('/inventory');
 });

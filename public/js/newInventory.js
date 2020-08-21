@@ -117,11 +117,14 @@ $(document).ready(() => {
 
 function addInventoryRow(inventoryItem) {
   const table = $('tbody');
+  // Link to updateProd page.
+  const hrefStr = `/update/inventory/${inventoryItem.sku}`;
   const rowNum = table.children().length + 1;
   const row = `
   <tr>
     <th scope="row">${rowNum}</th>
-    <td>${inventoryItem.sku}</td>
+
+    <td><a href=${hrefStr}>${inventoryItem.sku}</a></td> 
     <td>${inventoryItem.name}</td>
     <td>${inventoryItem.description}</td>
     <td>${inventoryItem.currentPurchasePrice}</td>

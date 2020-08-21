@@ -21,7 +21,7 @@ module.exports = (app) => {
     res.render('skuLookup');
   });
 
-  app.get('/update/inventory', (req, res) => {
+  app.get('/update/inventory/:sku', (req, res) => {
     res.render('updateProd');
   });
 };

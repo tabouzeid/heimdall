@@ -56,3 +56,8 @@ a:link {
 @media screen and (min-width: 401px) and (max-width: 1024px) {
     #inventoryBtn { display: none; }   /* hide it elsewhere */
   }
+
+  /* alert max quantity in order form*/
+  input:invalid {
+    border: 1px solid #FF0000;
+}
