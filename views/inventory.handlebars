@@ -1,6 +1,11 @@
-<nav class="navbar-light bg-light invNav">
-    <a href="/"><img class="invLogo" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
-    <form class="form-inline">
+<style>
+    body {
+        background-color: #002855;
+    }
+</style>
+<nav class="navbar-light bg-light invNav vw-100">
+    <a href="/"><img class="invLogo ml-5" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
+    <form class="form-inline mr-5">
         {{!-- NewOrder button --}}
         <button type="button" id="newOrder" class="btn btn-primary btn-sm mx-4 my-sm-0" data-toggle="modal"
             data-target="#exampleModal" data-whatever="@mdo">New Order</button>
@@ -10,8 +15,10 @@
             data-target="#exampleModal" data-whatever="@mdo">New Inventory</button>
     </form>
 </nav>
-<div class="container my-5">
-    <table id="invTable" class="table table-hover">
+
+<div class="card p-5 vw-100">
+    <h2 class="text-center mb-5 font-weight-bold">Current Inventory</h2>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -23,15 +30,15 @@
                 <th scope="col">Quantity</th>
             </tr>
         </thead>
-        <tbody id="data-container">
-
-        </tbody>
+        <tbody id="data-container"> </tbody>
     </table>
 </div>
+
 <!-- Footer -->
       <div class="card text-white" id="pagination-container" style="background-color: #002855;">
         <img src="../public/img/heimdall.base.png" class="mx-auto d-block img-fluid" alt="Fabric samples pinned to noted paper." style="max-width: 50%; padding: 5%;">
     </div>
+
 
 <script src="/js/newOrder.js"></script>
 <script src="/js/newInventory.js"></script>

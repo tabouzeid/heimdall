@@ -170,3 +170,7 @@ $('#close-screen').on('click', (e) => {
   e.preventDefault();
   window.location.replace('/inventory');
 });
+
+$('#goCurrent').click(() => {
+  window.location.replace('/inventory');
+});
