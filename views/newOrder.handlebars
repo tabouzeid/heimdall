@@ -27,17 +27,23 @@
             <th class="text-center">Client Name</th>
             <th class="text-center">SKU</th>
             <th class="text-center">Quantity</th>
+            <th class="text-center">Price Per Unit</th>
             <th class="text-center"></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="pt-3-half" contenteditable="true">
-              <select id="buy-sell"><option value="" disabled selected hidden>Select</option></select>
+            <td class="pt-3-half">
+              <select id="buy-sell_0"><option value="" disabled selected hidden>Select</option></select>
             </td>
-            <td class="pt-3-half" contenteditable="true"><input  id="client-name"></td>
-            <td id="sku" class="pt-3-half" contenteditable="true"></td>
-            <td id="quantity" class="pt-3-half" contenteditable="true"></td>
+            <td class="pt-3-half"><input id="client-name_0"></td>
+            <td class="pt-3-half">
+              <select id="sku_0"><option value="" disabled selected hidden>Select</option></select>
+            </td>
+            <td class="pt-3-half">
+              <input type="number" step="1" id="quantity_0">
+            </td>
+            <td class="pt-3-half" id="price-per-unit_0"></td>
             <td ><span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span></td>
           </tr>
 
@@ -48,7 +54,7 @@
 </div>
 
 <div class="modal-footer">
-        <button type="button" id="submit-order" class="btn btn-primary">Save changes</button>
+        <button type="button" id="submit-order" class="btn btn-primary">Submit</button>
         <button type="button" id = "close-screen" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
 
