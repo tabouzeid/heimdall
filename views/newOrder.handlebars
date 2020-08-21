@@ -1,6 +1,6 @@
 <nav class="navbar-expand-md navbar-light bg-light invNav">
-  <a href="/"><img class="invLogo" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
-  <form class="form-inline">
+  <a href="/"><img class="invLogo ml-5" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
+  <form class="form-inline mr-5">
 
     {{!-- NewInventory button --}}
     <button type="button" id="goCurrent" class="btn btn-primary btn-sm my-sm-0" data-toggle="modal">Current
@@ -9,55 +9,59 @@
 </nav>
 
 
-<div class="card">
-  <div class="card-body">
-    <div id="table" class="table-editable">
-      <h3 class="text-center font-weight-bold text-uppercase">New Order</h3>
-      <span class="table-add float-right mb-4 mr-4"><a href="#!" class="text-success">
-          <i class="fas fa-plus fa-2x" style="color: #002855" aria-hidden="true"></i></a></span>
+<div class="container">
+  <div class="card mx-auto mt-5">
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <h2 class="text-center font-weight-bold">New Order</h2>
+        <span class="table-add float-right mb-4 mr-4"><a href="#!" class="text-success">
+            <i class="fas fa-plus fa-2x" style="color: #002855" aria-hidden="true"></i></a></span>
 
 
-      <table class="table table-bordered table-responsive-md ta  ble-striped text-center">
-        <thead>
-          <tr>
-            <th class="text-center">Buy/Sell</th>
-            <th class="text-center">Client Name</th>
-            <th class="text-center">SKU</th>
-            <th class="text-center">Quantity</th>
-            <th class="text-center">Price Per Unit</th>
-            <th class="text-center"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="pt-3-half">
-              <select id="buy-sell_0">
-                <option value="" disabled selected hidden>Select</option>
-              </select>
-            </td>
-            <td class="pt-3-half"><input id="client-name_0"></td>
-            <td class="pt-3-half">
-              <select id="sku_0">
-                <option value="" disabled selected hidden>Select</option>
-              </select>
-            </td>
-            <td class="pt-3-half">
+        <table class="table table-bordered table-responsive-md ta  ble-striped text-center">
+          <thead>
+            <tr>
+              <th class="text-center">Buy/Sell</th>
+              <th class="text-center">Client Name</th>
+              <th class="text-center">SKU</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Price Per Unit</th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="pt-3-half">
+                <select id="buy-sell_0">
+                  <option value="" disabled selected hidden>Select</option>
+                </select>
+              </td>
+              <td class="pt-3-half"><input id="client-name_0"></td>
+              <td class="pt-3-half">
+                <select id="sku_0">
+                  <option value="" disabled selected hidden>Select</option>
+                </select>
+              </td>
+              <td class="pt-3-half">
 
-             <input type="number" step="1" id="quantity_0">
-            </td>
-            <td class="pt-3-half" id="price-per-unit_0"></td>
-            <td ><span class="table-remove"><button type="button" class="btn btn-default btn-rounded btn-sm my-0">Remove</button></span></td>
-          </tr>
+                <input type="number" step="1" id="quantity_0">
+              </td>
+              <td class="pt-3-half" id="price-per-unit_0"></td>
+              <td><span class="table-remove"><button type="button"
+                    class="btn btn-default btn-rounded btn-sm my-0">Remove</button></span></td>
+            </tr>
 
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div class="modal-footer">
+      <button type="button" id="submit-order" class="btn btn-primary btn-sm my-sm-0">Submit</button>
+      <button type="button" id="close-screen" class="btn btn-primary btn-sm my-sm-0" data-dismiss="modal">Close</button>
     </div>
   </div>
-</div>
-
-<div class="modal-footer">
-        <button type="button" id="submit-order" class="btn btn-primary btn-sm my-sm-0">Submit</button>
-        <button type="button" id = "close-screen" class="btn btn-primary btn-sm my-sm-0" data-dismiss="modal">Close</button>
 </div>
 
 

@@ -60,3 +60,7 @@ $(document).ready(() => {
     });
   }
 });
+
+$('#goCurrent').click(() => {
+  window.location.replace('/inventory');
+});
