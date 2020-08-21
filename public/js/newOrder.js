@@ -144,3 +144,7 @@ submitOrder.on('click', (event) => {
   addOrder(newOrderData);
   window.location.replace('/inventory');
 });
+
+$('#goCurrent').click(() => {
+  window.location.replace('/inventory');
+});

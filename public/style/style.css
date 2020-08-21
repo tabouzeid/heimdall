@@ -40,26 +40,14 @@ a:link {
 
 /* //////////////////// Brielle's styling ///////////////// */
 
-.inventoryPageLeftCol{
-  background-color: #002855;
-  color: white;
-}
-
-.searchHeader{
-  color: white;
-}
-.page-link {
-  background-color: white;
-  color: blue;
-}
-
 .invNav{
   display: flex;
   justify-content:space-between;
   padding: 2rem;
-  display: flex;
   align-items: center;
 }
+
+
 /* Inventory Button Hidden at Smaller View Ports */
 @media screen and (min-width: 0px) and (max-width: 400px) {
     #inventoryBtn { display: block; }  /* show it on small screens */
