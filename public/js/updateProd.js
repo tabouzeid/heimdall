@@ -28,7 +28,8 @@ $(document).ready(() => {
     $('#sellPrice').attr('value', data.currentSalePrice);
   }
 
-  // When the form is submitted, The new values are passed into the update function which sends a put request.
+  // When the form is submitted,
+  // The new values are passed into the update function which sends a put request.
   updateProduct.on('submit', (event) => {
     event.preventDefault();
 
