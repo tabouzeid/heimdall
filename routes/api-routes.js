@@ -99,4 +99,8 @@ module.exports = function (app) {
     // });
     res.end();
   });
+
+  app.get('/update/inventory/:sku', (req, res) => {
+    res.render('updateProd');
+  });
 };
