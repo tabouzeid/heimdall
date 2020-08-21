@@ -27,6 +27,7 @@
             <th class="text-center">Client Name</th>
             <th class="text-center">SKU</th>
             <th class="text-center">Quantity</th>
+            <th class="text-center">Price Per Unit</th>
             <th class="text-center"></th>
           </tr>
         </thead>
@@ -40,8 +41,9 @@
               <select id="sku_0"><option value="" disabled selected hidden>Select</option></select>
             </td>
             <td class="pt-3-half">
-              <select id="quantity_0"><option value="" disabled selected hidden>Select</option></select>
+              <input type="number" step="1" id="quantity_0">
             </td>
+            <td class="pt-3-half" id="price-per-unit_0"></td>
             <td ><span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span></td>
           </tr>
 
@@ -52,7 +54,7 @@
 </div>
 
 <div class="modal-footer">
-        <button type="button" id="submit-order" class="btn btn-primary">Save changes</button>
+        <button type="button" id="submit-order" class="btn btn-primary">Submit</button>
         <button type="button" id = "close-screen" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
 
