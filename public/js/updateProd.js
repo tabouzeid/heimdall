@@ -8,6 +8,7 @@ $(document).ready(() => {
   const updatedCost = $('input#cost');
   const updatedPrice = $('input#sellPrice');
 
+  // Parses sku number from the URL
   const url = window.location.href.split('/');
 
   $.ajax({
@@ -17,6 +18,7 @@ $(document).ready(() => {
     renderProdData(res);
   });
 
+  // Populates the update form.
   function renderProdData(data) {
     $('#skuNum').text(`SKU: ${parseInt(data.sku, 10)}`).css('font-size', 25);
     $('#productName').attr('value', data.name);
@@ -26,6 +28,7 @@ $(document).ready(() => {
     $('#sellPrice').attr('value', data.currentSalePrice);
   }
 
+  // When the form is submitted, The new values are passed into the update function which sends a put request.
   updateProduct.on('submit', (event) => {
     event.preventDefault();
 
@@ -61,7 +64,7 @@ $(document).ready(() => {
     }).then(() => {
       window.location.replace('/inventory');
     }).catch((err) => {
-      console.log(err);
+      console.log(err); // sends a 200 and "OK", but does not UPDATE, or redirects.
     });
   }
 });
