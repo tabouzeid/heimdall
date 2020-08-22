@@ -7,7 +7,7 @@ Heimdall allows the user to add and update their invetory of products, as well a
 
 ## Visuals
 
-![AppGif]()
+![AppScreenshot](./public/img/app_screenshot.png)
 
 ## Authors & Acknowledgement
 
