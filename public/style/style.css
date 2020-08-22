@@ -33,8 +33,7 @@ a:link {
     margin-right: 10%;
     background-color: rgb(43, 102, 150);
     border: none;
-    padding-right: 4%;
-    padding-left: 4%;
+    padding: 5px 20px 5px 20px;
     float: right;
 }
 
