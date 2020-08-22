@@ -78,10 +78,10 @@ function productResult(productObj) {
     // Append the content to it. this is the same as
     // <div id = product-well-xxx>
     // -> add the sku, name, description..etc, via the append method
-    $(`#product-well-${i}`).append(`<h2 id=sku-${i}>${productObj.products[i].sku}</h2>`);
-    $(`#product-well-${i}`).append(`<h2 id=name-${i}>${productObj.products[i].name}</h2>`);
+    $(`#product-well-${i}`).append(`<h3 id=sku-${i}>${productObj.products[i].sku}</h3>`);
+    $(`#product-well-${i}`).append(`<h1 id=name-${i}>${productObj.products[i].name}</h1>`);
     $(`#product-well-${i}`).append(`<h2 id=desc-${i}>${productObj.products[i].shortDescription}</h2>`);
     $(`#product-well-${i}`).append(`<h2 id=saleprice-${i}>${productObj.products[i].salePrice}</h2>`);
-    $(`#product-well-${i}`).append(`<button class="btn btn-primary add-inv-btn" data-inventory="${i}">Add This Inventory</button>`);
+    $(`#product-well-${i}`).append(`<button class="btn btn-primary add-inv-btn mx-auto" data-inventory="${i}">Add This Inventory</button>`);
   }
 }
