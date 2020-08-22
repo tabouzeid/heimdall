@@ -21,6 +21,7 @@ module.exports = (app) => {
     res.render('skuLookup');
   });
 
+  // The sku is added to the params of the URL to be parsed in updateProd.js.
   app.get('/update/inventory/:sku', (req, res) => {
     res.render('updateProd');
   });

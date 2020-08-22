@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 $(document).ready(() => {
   const updateProduct = $('form.updateProduct');
-  const productSku = $('#skuNum');
   const updatedProdName = $('input#productName');
   const updatedQuantity = $('input#quantity');
   const updatedProdDesc = $('input#productDescription');
@@ -18,14 +17,17 @@ $(document).ready(() => {
     renderProdData(res);
   });
 
+  let z = 0;
   // Populates the update form.
   function renderProdData(data) {
-    $('#skuNum').text(`SKU: ${parseInt(data.sku, 10)}`).css('font-size', 25);
+    $('#skuNum').text(`SKU: ${data.sku}`).css('font-size', 25);
     $('#productName').attr('value', data.name);
     $('#quantity').attr('value', data.inventoryQuantity);
     $('#productDescription').attr('value', data.description);
     $('#cost').attr('value', data.currentPurchasePrice);
     $('#sellPrice').attr('value', data.currentSalePrice);
+    z = data.sku;
+    console.log(`this is the data.sku: ${z}`);
   }
 
   // When the form is submitted,
@@ -34,7 +36,7 @@ $(document).ready(() => {
     event.preventDefault();
 
     const updatedProdData = {
-      sku: productSku.text().trim(),
+      sku: z,
       productName: updatedProdName.val().trim(),
       quantity: updatedQuantity.val().trim(),
       productDesc: updatedProdDesc.val().trim(),
@@ -56,16 +58,16 @@ $(document).ready(() => {
       minRequirement: 0,
     };
 
+    // Update the record.
     $.ajax({
       method: 'PUT',
       url: '/api/product',
       data: JSON.stringify(d),
       contentType: 'application/json',
       dataType: 'json',
-    }).then(() => {
-      window.location.replace('/inventory');
-    }).catch((err) => {
-      console.log(err); // sends a 200 and "OK", but does not UPDATE, or redirects.
     });
+
+    // Go to main inventory page. GET is called in newInventory.js.
+    window.location.replace('/inventory');
   }
 });
