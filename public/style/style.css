@@ -47,19 +47,17 @@ a:link {
 }
 
 
-/* Inventory Button Hidden at Smaller View Ports */
+/* Inventory Button Hidden at Smaller View Ports
 @media screen and (min-width: 0px) and (max-width: 400px) {
     #inventoryBtn { display: block; }  /* show it on small screens */
     /* #tableBody {
   padding: 0px; */
-}
   
-  
+/*   
 @media screen and (min-width: 401px) and (max-width: 1024px) {
     #inventoryBtn { display: none; }   /* hide it elsewhere */
     /* #tableBody {padding: 0px;
     margin: 0px;} */
-}
 
   /* alert max quantity in order form*/
   input:invalid {
