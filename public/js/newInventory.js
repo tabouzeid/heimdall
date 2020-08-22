@@ -9,7 +9,6 @@ $(document).ready(() => {
     res.forEach((value) => {
       addInventoryRow(value);
     });
-
   });
 
   // When clicked on goCurrent, takes user to current inventory page
