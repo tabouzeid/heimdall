@@ -37,6 +37,7 @@ module.exports = function (app) {
         sku: req.body.sku,
       },
     }).then(() => {
+      console.log('updated');
       res.end();
     });
   });

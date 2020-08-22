@@ -58,11 +58,8 @@ $(document).ready(() => {
       data: JSON.stringify(updatedProdData),
       contentType: 'application/json',
       dataType: 'json',
-    }).then(() => {
-      window.location.replace('/inventory');
-    }).catch((err) => {
-      console.log(err); // sends a 200 and "OK", but does not UPDATE, or redirects.
     });
+    window.location.replace('/inventory');
   }
 });
 
