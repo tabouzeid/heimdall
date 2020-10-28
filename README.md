@@ -1,5 +1,5 @@
 # Heimdall
-Heimdall is a simple, inventory management app: https://mysterious-falls-36558.herokuapp.com/
+Heimdall is a simple, inventory management app: https://heimdall-36558.herokuapp.com/
 
 ## Description
 
