@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Inventory Management System",
   "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "test": "npm run lint",
     "start": "node server.js",
@@ -11,7 +15,8 @@
     "watch": "nodemon server.js",
     "build:css": "npx @tailwindcss/cli --input ./public/style/input.css --output ./public/style/style.css --minify",
     "watch:css": "npx @tailwindcss/cli --input ./public/style/input.css --output ./public/style/style.css --watch",
-    "dev": "npm run build:css && npm run watch"
+    "dev": "npm run build:css && npm run watch",
+    "postinstall": "npm run build:css"
   },
   "repository": {
     "type": "git",
@@ -27,22 +32,23 @@
   },
   "homepage": "https://github.com/tabouzeid/heimdall#readme",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
     "dotenv": "^16.4.5",
     "express": "^4.21.2",
     "express-handlebars": "^7.1.3",
     "node-fetch": "^2.6.1",
     "paginationjs": "^2.1.5",
     "pg": "^8.11.3",
-    "sequelize": "^6.37.5"
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.5",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.18",
     "autoprefixer": "^10.4.24",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
     "nodemon": "^3.1.0",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.18"
+    "postcss": "^8.5.6"
   }
 }

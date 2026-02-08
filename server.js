@@ -31,8 +31,21 @@ require('./routes/html-routes')(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`App listening on PORT ${PORT}`);
+
+// For Vercel serverless deployment
+if (process.env.VERCEL) {
+  // Sync database on cold start
+  db.sequelize.sync().catch((err) => {
+    console.error('Database sync error:', err);
   });
-});
+  
+  // Export the app for Vercel
+  module.exports = app;
+} else {
+  // For local development
+  db.sequelize.sync().then(() => {
+    app.listen(PORT, () => {
+      console.log(`App listening on PORT ${PORT}`);
+    });
+  });
+}
