@@ -1,60 +1,54 @@
-<nav class="navbar-expand-md navbar-light bg-light invNav">
-  <a href="/"><img class="invLogo ml-5" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
-  <form class="form-inline mr-5">
-    <button type="button" id="goCurrent" class="btn btn-primary btn-sm my-sm-0" data-toggle="modal"
-      data-target="#exampleModal" data-whatever="@mdo">Current Inventory</button>
-  </form>
+<nav class="navbar w-full px-8 py-4 flex justify-between items-center">
+  <a href="/"><img class="h-12" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
+  <button type="button" id="goCurrent" class="btn-primary text-sm">Current Inventory</button>
 </nav>
 
+<div class="container mx-auto px-4 py-8">
+  <div class="max-w-2xl mx-auto">
+    <div class="card">
+      <h2 class="text-3xl font-bold text-center mb-8">New Inventory</h2>
+      <form class="newInventory space-y-6">
 
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-6">
-      <h2><b>
-          <center>New Inventory</center>
-        </b></h2>
-      <form class="newInventory">
-
-        <div class="form-group">
-          <label for="sku">SKU</label>
-          <input type="text" class="form-control" id="sku">
+        <div>
+          <label for="sku" class="block text-sm font-medium text-gray-700 mb-2">SKU</label>
+          <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="sku">
         </div>
 
-        <div class="form-group">
-          <label for="productName">Product Name</label>
-          <input type="text" class="form-control" id="productName">
+        <div>
+          <label for="productName" class="block text-sm font-medium text-gray-700 mb-2">Product Name</label>
+          <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="productName">
         </div>
 
-        <div class="form-group">
-          <label for="productDescription">Product Description</label>
-          <input type="text" class="form-control" id="productDescription">
+        <div>
+          <label for="productDescription" class="block text-sm font-medium text-gray-700 mb-2">Product Description</label>
+          <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="productDescription">
         </div>
 
-        <div class="form-group">
-          <label for="productDescription">Cost</label>
-          <input type="number" step="0.01" class="form-control" id="cost">
+        <div>
+          <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">Cost</label>
+          <input type="number" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="cost">
         </div>
 
-
-        <div class="form-group">
-          <label for="sellPrice">Sell Price</label>
-          <input type="number" step="0.01" class="form-control" id="sellPrice">
+        <div>
+          <label for="sellPrice" class="block text-sm font-medium text-gray-700 mb-2">Sell Price</label>
+          <input type="number" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="sellPrice">
         </div>
 
-        <div class="form-group">
-          <label for="quantity">Quantity</label>
-          <input type="number" class="form-control" id="quantity">
+        <div>
+          <label for="quantity" class="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
+          <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" id="quantity">
         </div>
 
-
-        <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-          <span class="sr-only">Error:</span> <span class="msg"></span>
+        <div style="display: none" id="alert" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <span class="msg"></span>
         </div>
-        <button type="submit" class="btn btn-default">Add Product</button>
+        
+        <button type="submit" class="btn-primary w-full">Add Product</button>
       </form>
-      <br />
-      <p>Lookup Supplier Inventory <a href="/add/skuLookup">here</a></p>
+      
+      <div class="mt-6 text-center">
+        <p class="text-gray-600">Lookup Supplier Inventory <a href="/add/skuLookup" class="text-blue-600 hover:text-blue-800 underline">here</a></p>
+      </div>
     </div>
   </div>
 </div>

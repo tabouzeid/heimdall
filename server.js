@@ -4,8 +4,9 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
+require('dotenv').config();
 const express = require('express');
-const exphbs = require('express-handlebars');
+const { engine } = require('express-handlebars');
 
 // Sets up the Express App
 // =============================================================
@@ -16,7 +17,7 @@ const PORT = process.env.PORT || 8080;
 const db = require('./models');
 
 // Set Handlebars as the default templating engine.
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.engine('handlebars', engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));

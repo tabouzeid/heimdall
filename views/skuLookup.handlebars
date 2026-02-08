@@ -1,69 +1,42 @@
-<nav class="navbar-expand-md navbar-light bg-light invNav">
-  <a href="/"><img class="invLogo ml-5" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
-  <form class="form-inline mr-5">
-
-    {{!-- NewInventory button --}}
-    <button type="button" id="goCurrent" class="btn btn-primary btn-sm my-sm-0" data-toggle="modal">Current
-      Inventory</button>
-  </form>
+<nav class="navbar w-full px-8 py-4 flex justify-between items-center">
+  <a href="/"><img class="h-12" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
+  <button type="button" id="goCurrent" class="btn-primary text-sm">Current Inventory</button>
 </nav>
 
-<div class="container">
-  <h2>
-    <center><b>Product Search</b></center>
-  </h2>
-  <h4>
-    <center>Search by Category</center>
-  </h4>
-  <hr>
+<div class="container mx-auto px-4 py-8">
+  <div class="card max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-4">Product Search</h2>
+    <h4 class="text-xl text-center text-gray-600 mb-8">Search by Category</h4>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4>List of Categories</h4>
+    <div class="mb-8">
+      <h4 class="text-lg font-semibold mb-4">List of Categories</h4>
+      <div class="bg-gray-50 p-6 rounded-lg">
+        <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4" id="selectCategory">
+          <option value="None">-- Select --</option>
+          <option value="pcmcat241600050001">Home Audio </option>
+          <option value="abcat0910000">Washer and Dryer</option>
+          <option value="abcat0502000">Laptops</option>
+          <option value="pcmcat232900050000">Ninendo 3DS</option>
+          <option value="pcmcat310200050004">Portable and Wireless Speakers</option>
+          <option value="abcat0101000">TV</option>
+          <option value="abcat0901000">Refrigerators</option>
+          <option value="abcat0204000">Headphones</option>
+          <option value="pcmcat300300050002">Xbox One</option>
+          <option value="pcmcat242800050021">Health, Fitness and Beauty</option>
+        </select>
+
+        <div class="text-right">
+          <button type="submit" class="btn-primary" id="sku-search-btn">
+            <span class="fa fa-search mr-2"></span> Search Products By Category
+          </button>
         </div>
-
-        <div class="card-body">
-          <div class="jumbotron">
-
-            <select class="custom-select" id="selectCategory">
-              <option value="None">-- Select --</option>
-              <option value="pcmcat241600050001">Home Audio </option>
-              <option value="abcat0910000">Washer and Dryer</option>
-              <option value="abcat0502000">Laptops</option>
-              <option value="pcmcat232900050000">Ninendo 3DS</option>
-              <option value="pcmcat310200050004">Portable and Wireless Speakers</option>
-              <option value="abcat0101000">TV</option>
-              <option value="abcat0901000">Refrigerators</option>
-              <option value="abcat0204000">Headphones</option>
-              <option value="pcmcat300300050002">Xbox One</option>
-              <option value="pcmcat242800050021">Health, Fitness and Beauty</option>
-            </select>
-            <br>
-            <br>
-
-            <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="sku-search-btn">
-                <span class="fa fa-search"></span> Search Products By Category.</button>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-  </div>
-  <div class="row">
 
-    <div class="col-lg-12">
-
-      <div class="card">
-        <div class="card-header">
-          <h4>Product Details</h4>
-        </div>
-        <div class="card-body" id="product-section">
-          <!-- Content will go in here -->
-        </div>
+    <div>
+      <h4 class="text-lg font-semibold mb-4">Product Details</h4>
+      <div class="bg-white border border-gray-200 rounded-lg p-6" id="product-section">
+        <!-- Content will go in here -->
       </div>
     </div>
   </div>

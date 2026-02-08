@@ -96,20 +96,21 @@ $(document).ready(() => {
 
 function addInventoryRow(inventoryItem) {
   const table = $('tbody');
-  // Link to updateProd page.
-  const hrefStr = `/update/inventory/${inventoryItem.sku}`;
+  const hrefStr = `/update/inventory/${encodeURIComponent(inventoryItem.sku)}`;
   const rowNum = table.children().length + 1;
-  const row = `
-  <tr>
-    <th scope="row">${rowNum}</th>
 
-    <td><a href=${hrefStr}>${inventoryItem.sku}</a></td> 
-    <td>${inventoryItem.name}</td>
-    <td>${inventoryItem.description}</td>
-    <td>${inventoryItem.currentPurchasePrice}</td>
-    <td>${inventoryItem.currentSalePrice}</td>
-    <td>${inventoryItem.inventoryQuantity}</td>
-  </tr>
-  `;
+  // Use safe jQuery DOM methods instead of template literals to prevent XSS
+  const row = $('<tr>');
+
+  $('<th>').attr('scope', 'row').text(rowNum).appendTo(row);
+  $('<td>').append(
+    $('<a>').attr('href', hrefStr).text(inventoryItem.sku),
+  ).appendTo(row);
+  $('<td>').text(inventoryItem.name).appendTo(row);
+  $('<td>').text(inventoryItem.description).appendTo(row);
+  $('<td>').text(inventoryItem.currentPurchasePrice).appendTo(row);
+  $('<td>').text(inventoryItem.currentSalePrice).appendTo(row);
+  $('<td>').text(inventoryItem.inventoryQuantity).appendTo(row);
+
   table.append(row);
 }

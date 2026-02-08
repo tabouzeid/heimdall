@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Custom Heimdall styles */
+@theme {
+  --color-heimdall-navy: #002855;
+  --color-heimdall-blue: #0066CC;
+}
+
+/* Custom component classes */
+.btn-primary {
+  background-color: #0066CC;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0052A3;
+}
+
+.btn-secondary {
+  background-color: #4B5563;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #374151;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-lg p-6;
+}
+
+.navbar {
+  @apply bg-white shadow-md;
+}
+
+.table-row {
+  @apply hover:bg-gray-50 transition-colors duration-150;
+}

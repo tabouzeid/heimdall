@@ -51,11 +51,11 @@ $(document).ready(() => {
 });
 
 function searchProduct(category) {
-  // const categoryURL = 'https://api.bestbuy.com/v1/products((categoryPath.id=pcmcat241600050001))?apiKey=vDloch7HfMAIbPtlLB2FE6Sp&sort=image.asc&show=categoryPath.name,image,name,salePrice,shortDescription,sku,thumbnailImage&format=json&pageSize=100';
-  const categoryURL = `https://api.bestbuy.com/v1/products((categoryPath.id=${category}))?apiKey=vDloch7HfMAIbPtlLB2FE6Sp&sort=image.asc&show=categoryPath.name,image,name,salePrice,shortDescription,sku,thumbnailImage&format=json&pageSize=100`;
+  // Use server-side proxy endpoint instead of direct API call
+  const proxyURL = `/api/bestbuy/search/${encodeURIComponent(category)}`;
 
   $.ajax({
-    url: categoryURL,
+    url: proxyURL,
     method: 'GET',
   }).then(productResult);
 }
@@ -74,14 +74,17 @@ function productResult(productObj) {
     $('#product-section').append(productSection);
 
     // Now add all of product data to the well we just placed on the page
-    // Below, use jQUERY way, to find, for those ID equal to this product-well-i, then
-    // Append the content to it. this is the same as
-    // <div id = product-well-xxx>
-    // -> add the sku, name, description..etc, via the append method
-    $(`#product-well-${i}`).append(`<h3 id=sku-${i}>${productObj.products[i].sku}</h3>`);
-    $(`#product-well-${i}`).append(`<h1 id=name-${i}>${productObj.products[i].name}</h1>`);
-    $(`#product-well-${i}`).append(`<h2 id=desc-${i}>${productObj.products[i].shortDescription}</h2>`);
-    $(`#product-well-${i}`).append(`<h2 id=saleprice-${i}>${productObj.products[i].salePrice}</h2>`);
-    $(`#product-well-${i}`).append(`<button class="btn btn-primary add-inv-btn mx-auto" data-inventory="${i}">Add This Inventory</button>`);
+    // Use safe jQuery DOM methods instead of template literals to prevent XSS
+    const productWell = $(`#product-well-${i}`);
+
+    $('<h3>').attr('id', `sku-${i}`).text(productObj.products[i].sku).appendTo(productWell);
+    $('<h1>').attr('id', `name-${i}`).text(productObj.products[i].name).appendTo(productWell);
+    $('<h2>').attr('id', `desc-${i}`).text(productObj.products[i].shortDescription).appendTo(productWell);
+    $('<h2>').attr('id', `saleprice-${i}`).text(productObj.products[i].salePrice).appendTo(productWell);
+    $('<button>')
+      .addClass('btn btn-primary add-inv-btn mx-auto')
+      .attr('data-inventory', i)
+      .text('Add This Inventory')
+      .appendTo(productWell);
   }
 }

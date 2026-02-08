@@ -3,43 +3,41 @@
         background-color: #002855;
     }
 </style>
-<nav class="navbar-light bg-light invNav vw-100">
-    <a href="/"><img class="invLogo ml-5" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
-    <form class="form-inline mr-5">
+<nav class="navbar w-full px-8 py-4 flex justify-between items-center">
+    <a href="/"><img class="h-12" src="/img/heimdall_smaller.png" alt="heimdall logo"></a>
+    <div class="flex gap-4">
         {{!-- NewOrder button --}}
-        <button type="button" id="newOrder" class="btn btn-primary btn-sm mx-4 my-sm-0" data-toggle="modal"
-            data-target="#exampleModal" data-whatever="@mdo">New Order</button>
+        <button type="button" id="newOrder" class="btn-primary text-sm">New Order</button>
 
         {{!-- NewInventory button --}}
-        <button type="button" id="newInventory" class="btn btn-primary btn-sm my-sm-0" data-toggle="modal"
-            data-target="#exampleModal" data-whatever="@mdo">New Inventory</button>
-    </form>
+        <button type="button" id="newInventory" class="btn-primary text-sm">New Inventory</button>
+    </div>
 </nav>
 
-<div class="card p-5 vw-100 mb-5 vh-75">
-    <h2 class="text-center mb-5 font-weight-bold">Current Inventory</h2>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">SKU</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Wholesale</th>
-                <th scope="col">MSRP</th>
-                <th scope="col">Quantity</th>
-            </tr>
-        </thead>
-        <tbody id="data-container"> </tbody>
-    </table>
+<div class="card w-full my-8 mx-auto max-w-7xl min-h-screen">
+    <h2 class="text-center text-3xl font-bold mb-8">Current Inventory</h2>
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SKU</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wholesale</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">MSRP</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+                </tr>
+            </thead>
+            <tbody id="data-container" class="bg-white divide-y divide-gray-200"></tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Footer -->
-<div class="card text-white" id="pagination-container" style="background-color: #002855;">
-    <img src="/img/heimdall.base.png" class="mx-auto d-block img-fluid" alt="Fabric samples pinned to noted paper."
-        style="max-width: 50%; padding-top:1rem; padding-bottom:5px;">
+<div class="bg-heimdall-navy py-8">
+    <img src="/img/heimdall.base.png" class="mx-auto block w-full max-w-2xl px-8" alt="Heimdall logo footer.">
 </div>
-
 
 <script src="/js/newOrder.js"></script>
 <script src="/js/newInventory.js"></script>
