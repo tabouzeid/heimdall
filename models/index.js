@@ -1,9 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+// Explicit require so serverless bundlers (Vercel nft) trace and include pg;
+// Sequelize's own dynamic dialect require() is invisible to static analysis.
+const pg = require('pg');
 
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config.json')[env];
+const config = { ...require('../config/config.json')[env], dialectModule: pg };
 
 const basename = path.basename(module.filename);
 const db = {};
